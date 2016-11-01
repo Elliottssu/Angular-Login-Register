@@ -1,0 +1,22 @@
+{
+  "name": "bower",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Su Lianggang"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Elliottssu/Angular-Login-Register",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
