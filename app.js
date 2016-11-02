@@ -13,7 +13,7 @@ var express = require('express')
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 1001);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.engine('.html', ejs.__express);
@@ -30,8 +30,19 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+//页面刷新重定向(Angular use html5)
+app.use(function (req, res) {
+  if(req.path.indexOf('/api')>=0){
+    res.send("server text");
+  }else{ 
+    res.sendfile('public/index.html');
+  }
+});
+
+
+// app.get('/', routes.index);
+// app.get('/users', user.list);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
