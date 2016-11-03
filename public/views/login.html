@@ -1,1 +1,31 @@
-{{account}}
+<div class="container-fulid login-page">
+    <div class="login-main">
+        <div class="row">
+                <form name="loginForm" ng-submit="checkLogin()" method="post">
+                    <div class="col-md-5">
+                        <div class="login-part">
+                            <span class="lg-icon fa fa-user"> </span>
+                            <input type="text" id="accounts" ng-focus="isActiveAccounts = true" ng-blur="isActiveAccounts = flase" ng-model="login.account" autocomplete="off">
+                            <span class="botton-line" ng-class="{true:'active-line'}[isActiveAccounts]"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="login-part">
+                            <span class="lg-icon fa fa-lock"> </span>
+                            <input type="password" id="password" ng-focus="isActivePassword = true" ng-blur="isActivePassword = flase" ng-model="login.password" autocomplete="off">
+                            <span class="botton-line" ng-class="{true:'active-line'}[isActivePassword]"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button  class="button button--antiman login-submit" type="submit">登陆</button>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="tips">
+                            <div class="resp-msg" ng-if="resp.msg" ng-class="{'alert-danger':resp.status!=1,'alert-success':resp.status==1}">{{resp.msg}}</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
