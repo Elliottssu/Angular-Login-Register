@@ -7,7 +7,7 @@ angular.module('myApp', ['ui.router'])
 	  });
 
 	  $urlRouterProvider
-	  .when('/login','/login')
+	  .when('/','/login')
 	  .otherwise('/login')
 
 	  $stateProvider
@@ -37,20 +37,16 @@ angular.module('myApp', ['ui.router'])
 	    		$scope.resp.msg = "请输入密码";
 	    		return false;
 	    	}
-	    	// $http.get('/json/user.json',{'account':$scope.login.account,'password':$scope.login.password})
-	    	//   .success(function(result){
-	    	//   	console.log(result)
-	    	//   	if(result.code==1){
-	    	//   		$scope.resp.status = result.code;
-	    	//   		$scope.resp.msg = "登陆成功，正在跳转...";
-	    	//   		$timeout(function(){
-						// // $state.go('app.index');
-	     //                console.log("登陆成功，正在跳转...");
-	    	//   		},1000)
-	    	//   	}else{
-	    	//   		$scope.resp.msg = "用户名或密码错误";
-	    	//   	}
-	    	// })
+	    	//因为这里是模拟数据，所以直接拿到请求结果，根据结果与input值匹配
+	    	$http.get('/json/user.json').success(function(data){ 
+	    		if(data.data.account==$scope.login.account && data.data.password==$scope.login.password){
+	    			$scope.resp.status == data.code;
+	    			$scope.resp.msg="登陆成功,正在跳转···";
+	    		}else{
+	    			$scope.resp.msg="登陆失败";
+	    			$scope.resp.status==0;
+	    		}
+	    	})
 	    }
 	})
 	.controller('registerCtrl',function($scope) {
