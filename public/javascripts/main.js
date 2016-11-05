@@ -31,6 +31,7 @@ angular.module('myApp', ['ui.router'])
 	    $scope.checkLogin=function(){
 	    	if(!$scope.login.account){
 	    		$scope.resp.msg = "请输入用户名";
+	    		console.log($scope.resp.msg)
 	    		return false;
 	    	}
 	    	if(!$scope.login.password){
@@ -40,11 +41,11 @@ angular.module('myApp', ['ui.router'])
 	    	//因为这里是模拟数据，所以直接拿到请求结果，根据结果与input值匹配
 	    	$http.get('/json/user.json').success(function(data){ 
 	    		if(data.data.account==$scope.login.account && data.data.password==$scope.login.password){
-	    			$scope.resp.status == data.code;
+	    			$scope.resp.status = "1";
 	    			$scope.resp.msg="登陆成功,正在跳转···";
 	    		}else{
 	    			$scope.resp.msg="登陆失败";
-	    			$scope.resp.status==0;
+	    			$scope.resp.status = "0";
 	    		}
 	    	})
 	    }
