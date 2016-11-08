@@ -8,7 +8,7 @@
 		        </div>
 		        <div class="col-sm-4">
 		            <span class="imsg msg-error">
-		                <span ng-show="regForm.username.$error.minlength || (regForm.username.$invalid && regForm.username.$dirty)">用户名在2-15个字符内</span>
+		                <span ng-show="regForm.username.$invalid && regForm.username.$dirty">用户名在2-15个字符内</span>
 		            </span>
 		        </div>
 		    </div>
@@ -19,7 +19,7 @@
 		        </div>
 		        <div class="col-sm-4">
 		            <span class="imsg msg-error">
-		                <span ng-show="regForm.password.$dirty && regForm.password.$invalid">密码在6-20个字符内</span>
+		                <span ng-show="regForm.password.$invalid && regForm.password.$dirty">密码在6-20个字符内</span>
 		            </span>
 		        </div>
 		    </div>
@@ -30,8 +30,13 @@
 		        </div>
 		        <div class="col-sm-4">
 		            <span class="imsg msg-error">
-		                <span ng-show="regForm.repeatPassword.$dirty && regForm.repeatPassword.$invalid">两次输入的密码不一致</span>
+		                <span ng-show="regForm.repeatPassword.$dirty && user.repeatPassword!=user.password">两次输入的密码不一致</span>
 		            </span>
+		        </div>
+		    </div>
+		    <div class="form-group">
+		        <div class="col-sm-offset-4 col-sm-4">
+		          <button tyape="submit" class="button button--antiman login-submit pull-right">注册</button>
 		        </div>
 		    </div>
 		    <div class="form-group">
